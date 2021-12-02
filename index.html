@@ -28,22 +28,22 @@
         <div class="container" style="width: 60vw; align-items: center; padding-top: 30vh;">
             <form>
                 <div class="form-group">
-                    <label for="name">訂房者大名</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter email">
+                    <label for="name">訂房大名</label>
+                    <input type="text" class="form-control" id="name" placeholder="Name">
                 </div>
 
                 <p> </p>
 
                 <div class="form-group">
-                    <label for="password">訂房者手機號碼</label>
-                    <input type="text" class="form-control" id="password" placeholder="Password">
+                    <label for="phone">訂房手機號碼</label>
+                    <input type="text" class="form-control" id="phone" placeholder="Phone Number">
                 </div>
 
                 <p> </p>
 
                 <div class="form-group">
-                    <label for="password">簡訊驗證碼</label>
-                    <input type="text" class="form-control" id="password" placeholder="Password">
+                    <label for="code">簡訊驗證碼</label>
+                    <input type="text" class="form-control" id="code" placeholder="Verification Code">
                 </div>
 
                 <p> </p>
@@ -52,7 +52,16 @@
                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
                 </div> -->
                 <button type="button" class="btn btn-success" id="enter">輸入</button>
+
             </form>
+
+            <div class="text-center" style="width: 60vw;">
+                <button type="button" class="btn btn-danger" id="go" style="font-size: xx-large;">點我抽大獎</button>
+                <video autoplay playsinline style="pointer-events: none;" width="100%" height="auto" id="video">
+                    <source src="/assets/lucky_draw_Japan.mp4" type="video/mp4">
+                </video>
+            </div>
+
 
         </div>
 
@@ -76,8 +85,13 @@
 
     <script>
         $(document).ready(function () {
+
+            $("#go").hide();
+            $("#video").hide();
+
             $("#enter").click(function () {
-                if ($("#name").val() == "葉昱緯") {
+                if ($("#name").val() == "葉昱緯" && $("#phone").val() == "0932164281" && $("#code")
+                    .val() == "En2aKA0se8voli7kA") {
                     Swal.fire({
                         scrollbarPadding: false,
                         heightAuto: false,
@@ -85,6 +99,12 @@
                         title: '輸入正確',
                         text: '通過驗證'
                     })
+
+                    $(".form-group").hide();
+                    $("#enter").hide();
+                    $("#go").show();
+
+
                 } else {
                     Swal.fire({
                         scrollbarPadding: false,
@@ -94,6 +114,11 @@
                         text: '請檢查後再次輸入'
                     })
                 }
+            })
+
+            $("#go").click(function () {
+                $("#go").hide();
+                $("#video").show();
             })
         });
     </script>
