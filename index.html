@@ -52,6 +52,7 @@
                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
                 </div> -->
                 <button type="button" class="btn btn-success" id="enter">輸入</button>
+                <p id="blank"> </p>
 
             </form>
 
@@ -124,6 +125,7 @@
 
             $("#go").hide();
             $("#video").hide();
+            $("#blank").hide();
             $("#table").hide();
 
             $("#enter").click(function () {
@@ -140,6 +142,7 @@
                     $(".form-group").hide();
                     $("#enter").hide();
                     $("#go").show();
+                    $("#blank").show();
                     $("#table").show();
 
 
@@ -157,6 +160,7 @@
             $("#go").click(function () {
                 $("#go").hide();
                 $("#video").show();
+                $("#blank").hide();
                 $("#table").removeClass('first');              
             })
         });
