@@ -86,6 +86,30 @@
     <script>
         $(document).ready(function () {
 
+            var ip;
+            $.ajax({
+                type: "POST",
+                url: "datascripts/ip.php",
+                data: {
+                    get: "ip"
+                },
+                dataType: "json",
+                context: document.body,
+                async: true,
+                success: function (res, stato) {
+                    ip = res.ip;
+                    myCallback();
+                },
+                error: function (res, stato) {
+                    alert("IP thing didn't work.");
+                }
+            });
+
+            function myCallback() {
+                // Do whatever you want with ip here.
+                console.log(ip);
+            }
+
             $("#go").hide();
             $("#video").hide();
 
