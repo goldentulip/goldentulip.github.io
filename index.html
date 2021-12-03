@@ -60,6 +60,33 @@
                 <video autoplay playsinline style="pointer-events: none;" width="150px" height="150px" id="video">
                     <source src="/assets/lucky_draw.mp4" type="video/mp4">
                 </video>
+                <table class="table table-striped table-sm table-borderless" style="width: 60vw; font-size: smaller;" id="table">
+                    <!-- <tr>
+                        <th>Company</th>
+                        <th>Contact</th>
+                        <th>Country</th>
+                    </tr> -->
+                    <tr>
+                        <td>頭獎</td>
+                        <td>將捷金鬱金香酒店雙人房住宿券乙張</td>                        
+                    </tr>
+                    <tr>
+                        <td>貳獎</td>
+                        <td>河畔餐廳雙人餐券乙張</td>
+                    </tr>
+                    <tr>
+                        <td>參獎</td>
+                        <td>將捷金鬱金香酒店雙人房5折券乙張</td>
+                    </tr>
+                    <tr>
+                        <td>肆獎</td>
+                        <td>河畔餐廳雙人同行75折券乙張</td>
+                    </tr>
+                    <tr>
+                        <td>特別獎</td>
+                        <td>神秘小禮物乙份</td>
+                    </tr>
+                </table>
             </div>
 
 
@@ -93,10 +120,11 @@
             //         console.log(json.ip);
             //     }
             // );
-            
+
 
             $("#go").hide();
             $("#video").hide();
+            $("#table").hide();
 
             $("#enter").click(function () {
                 if ($("#name").val() == "葉昱緯" && $("#phone").val() == "0932164281" && $("#code")
@@ -128,6 +156,7 @@
             $("#go").click(function () {
                 $("#go").hide();
                 $("#video").show();
+                $("#table").show();
             })
         });
     </script>
