@@ -21,7 +21,3 @@ html {
     overflow: unset !important;
     padding-right: 0px !important;
 }
-
-#video {
-    max-height: 80vh;
-}
