@@ -21,3 +21,7 @@ html {
     overflow: unset !important;
     padding-right: 0px !important;
 }
+
+#video {
+    padding-top: -30px;
+}
