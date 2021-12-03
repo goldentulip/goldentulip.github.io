@@ -22,6 +22,14 @@ html {
     padding-right: 0px !important;
 }
 
+#go {
+    margin-top: -50px;
+}
+
 #video {
     margin-top: -45px;
+}
+
+.first {
+    margin-top: 86px;
 }
