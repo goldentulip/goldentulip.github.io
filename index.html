@@ -87,12 +87,12 @@
     <script>
         $(document).ready(function () {
 
-            var ip;
-            $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
-                function (json) {                    
-                    console.log(json.ip);
-                }
-            );
+            // var ip;
+            // $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
+            //     function (json) {                    
+            //         console.log(json.ip);
+            //     }
+            // );
             
 
             $("#go").hide();
@@ -105,8 +105,8 @@
                         scrollbarPadding: false,
                         heightAuto: false,
                         icon: 'success',
-                        title: '輸入正確',
-                        text: '通過驗證'
+                        title: '通過驗證',
+                        text: '祝您中大獎'
                     })
 
                     $(".form-group").hide();
@@ -119,8 +119,8 @@
                         scrollbarPadding: false,
                         heightAuto: false,
                         icon: 'error',
-                        title: '輸入之大名或驗證碼錯誤',
-                        text: '請檢查後再次輸入'
+                        title: '驗證失敗',
+                        text: '請檢查訂房資訊後再次輸入'
                     })
                 }
             })
