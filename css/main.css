@@ -34,3 +34,12 @@ html {
 .first {
     margin-top: 43px;
 }
+
+li {
+    padding: 2px;
+    margin: 5px;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}

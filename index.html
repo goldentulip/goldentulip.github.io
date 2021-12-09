@@ -25,8 +25,30 @@
 <body>
 
     <div class="bg">
+
+        <div class="container"
+            style="position:relative; width: 70vw; height: 60vh; align-items: center; top: 30vh; background-color: transparent; overflow: auto;"
+            id="instruction">
+            <h2 class="text-center">活動說明</h2>
+            <ul>
+                <li>中獎人領取獎品之有效期間至12月31日止，逾期即不能發給。</li>
+                <li>「頭獎 將捷金鬱金香酒店標準雙人房住宿券乙張」、「貳獎 河畔餐廳雙人餐券乙張」中獎者請於周一至周五 09:00 - 18:00上班時間來電，聯絡電話：02-2571-8170 分機121 賴小姐，並告知為中獎人以完成兌獎相關程序，逾期視同放棄。</li>
+                <li>「參獎 將捷金鬱金香酒店標準雙人房5折券乙張」、「肆獎 河畔餐廳雙人同行75折券乙張」中獎者將以電子郵件通知折價序號，留存資料不完整或錯誤致無法通知中獎者，視同放棄中獎資格。</li>
+                <li>「特別獎 神秘小禮物乙份」將寄發簡訊通知，並於入住當天發送至入住客房內，入住時敬請確認獎品是否完整。</li>
+                <li>本獎項為贈獎，屬無償取得之不記名免費兌換券，敬請妥善保存，遺失、被竊、損毀、恕不掛失或補發，亦不得要求更換獎品、轉讓或折換現金。</li>
+                <li>中獎者如有冒用他人身分、不符合或違反本活動規定事項者，本公司保有取消其得獎資格的權利。</li>
+                <li>將捷酒店集團保有取消、終止或修改本活動相關內容之權利，如有未盡事宜，悉依將捷酒店集團相關規定或解釋辦理。</li>
+            </ul>
+
+            <div class="text-center" id="ok">
+                <button type="button" class="btn btn-primary">確認</button>
+            </div>
+
+
+        </div>
+
         <div class="container" style="width: 60vw; align-items: center; padding-top: 30vh;">
-            <form>
+            <form id="text">
                 <div class="form-group">
                     <label for="name">訂房大名</label>
                     <input type="text" class="form-control" id="name" placeholder="Name">
@@ -71,7 +93,7 @@
                     </tr> -->
                     <tr>
                         <td>頭獎</td>
-                        <td>將捷金鬱金香酒店雙人房住宿券乙張</td>
+                        <td>將捷金鬱金香酒店標準雙人房住宿券乙張</td>
                     </tr>
                     <tr>
                         <td>貳獎</td>
@@ -79,7 +101,7 @@
                     </tr>
                     <tr>
                         <td>參獎</td>
-                        <td>將捷金鬱金香酒店雙人房5折券乙張</td>
+                        <td>將捷金鬱金香酒店標準雙人房5折券乙張</td>
                     </tr>
                     <tr>
                         <td>肆獎</td>
@@ -109,7 +131,9 @@
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>    
+    </script>
+
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js'></script>
 
 
     <script>
@@ -122,19 +146,46 @@
             //     }
             // );
 
+            var record;
+
+
+            var parameter = {
+                url: 'https://docs.google.com/spreadsheets/d/18tDQITbvGgANRzH4QuYJxBGhUg9LClaMA_ZmwPpYesw/edit#gid=0',
+                name: '工作表1',
+                startRow: 1,
+                startColumn: 1
+            };
+            $.get('https://script.google.com/macros/s/AKfycbxTCzd71nOu4KvIUeVhbmcv9MWPx04Og42h0EgIMopkiGpYVslWJDfkFb8ygwwn73leCg/exec',
+                parameter,
+                function (data) {
+                    // console.log(data);
+                    record = data;
+                    console.log(record);
+                });
+
 
             var image = new Image();
             image.src = '/assets/lucky_draw.gif';
 
 
+            $("#text").hide();
             $("#go").hide();
             $("#video").hide();
             $("#blank").hide();
             $("#table").hide();
 
+
+            $("#ok").click(function () {
+                $("#instruction").hide();
+                $("#ok").hide();
+                $("#text").show();
+
+            })
+
+
             $("#enter").click(function () {
                 if ($("#name").val() == "葉昱緯" && $("#phone").val() == "0932164281" && $("#code")
-                    .val() == "En2aKA0se8voli7kA") {
+                    .val() == "En2aKA0se8voli7kA" && record != "登DUA郎") {
                     Swal.fire({
                         scrollbarPadding: false,
                         heightAuto: false,
@@ -142,13 +193,35 @@
                         title: '通過驗證',
                         text: '祝您中大獎'
                     })
-
+                    console.log(record);
                     $(".form-group").hide();
                     $("#enter").hide();
                     $("#go").show();
                     $("#blank").show();
                     $("#table").show();
 
+
+                    var parameter = {
+                        url: 'https://docs.google.com/spreadsheets/d/18tDQITbvGgANRzH4QuYJxBGhUg9LClaMA_ZmwPpYesw/edit#gid=0',
+                        name: '工作表1',
+                        startRow: 1,
+                        startColumn: 1,
+                        record: '登DUA郎'
+                    };
+                    $.get('https://script.google.com/macros/s/AKfycbznBtzwlQ182HgT46B1ebIsRxLJKzs-uxynX78aDrbzNEqgTyDk-KXyf5OOV3l0fOiMAw/exec', parameter);
+
+
+
+                } else if ($("#name").val() == "葉昱緯" && $("#phone").val() == "0932164281" && $("#code")
+                    .val() == "En2aKA0se8voli7kA" && record == "登DUA郎") {
+                        console.log(record);
+                        Swal.fire({
+                        scrollbarPadding: false,
+                        heightAuto: false,
+                        icon: 'info',
+                        title: '您已完成抽獎',
+                        text: '感謝您對將捷金鬱金香酒店的支持'
+                    })
 
                 } else {
                     Swal.fire({
@@ -172,12 +245,12 @@
                         $("#result").addClass('table-success');
 
                         Swal.fire({
-                        scrollbarPadding: false,
-                        heightAuto: false,
-                        icon: 'info',
-                        title: '恭喜您抽中特別獎',
-                        text: '辦理入住時請出示中獎簡訊領取神秘小禮物乙份，謝謝您'
-                    })
+                            scrollbarPadding: false,
+                            heightAuto: false,
+                            icon: 'info',
+                            title: '恭喜您抽中特別獎',
+                            text: '系統將寄發簡訊通知，並於入住當天發送至入住客房內，入住時敬請確認獎品是否完整，謝謝您'
+                        })
                     }, 10750);
             })
         });
